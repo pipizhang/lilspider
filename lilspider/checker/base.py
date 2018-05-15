@@ -17,15 +17,30 @@ class Base:
     def run(self) -> None:
         raise NotImplementedError
 
-class Include(Base):
+    def yes(self) -> bool:
+        try:
+            self.run()
+            return True
+        except CheckerError:
+            pass
+        return False
+
+    def no(self) -> bool:
+        try:
+            self.run()
+        except CheckerError:
+            return True
+        return False
+
+class Included(Base):
     def run(self) -> None:
         if self.rule not in self.example:
-            self.throw('Include invalid "{}"'.format(self.rule))
+            self.throw('Included invalid "{}"'.format(self.rule))
 
-class UnInclude(Base):
+class Excluded(Base):
     def run(self) -> None:
         if self.rule in self.example:
-            self.throw('UnInclude invalid "{}"'.format(self.rule))
+            self.throw('Excluded invalid "{}"'.format(self.rule))
 
 class Regex(Base):
     def run(self) -> None:

@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 import re
 from typing import Generator, List
-
 from scrapy import Request, Selector
 from scrapy.http import Response
 from scrapy.spiders import Rule
 from scrapy.linkextractors import LinkExtractor as sle
+from lilspider.spiders import CommonSpider
 from ..items import BaiduItem
 
-from lilspider.spiders import CommonSpider 
 class SearchSpider(CommonSpider):
     name = 'search'
     allowed_domains = ['www.baidu.com']
@@ -35,9 +34,9 @@ class SearchSpider(CommonSpider):
         items = []
         els = response.xpath('//div[contains(@class, "c-container")]')
         for el in els:
-            title = ''.join(el.xpath('.//h3/a//text()').extract()).strip()
-            url = ''.join(el.xpath('.//a[@class="c-showurl"]//@href').extract()).strip()
-            showurl = ''.join(el.xpath('.//a[@class="c-showurl"]//text()').extract()).strip()
+            title = ''.join(el.xpath('.//h3/a//text()').extract()).strip() # type: str
+            url = ''.join(el.xpath('.//a[@class="c-showurl"]//@href').extract()).strip() # type: str
+            showurl = ''.join(el.xpath('.//a[@class="c-showurl"]//text()').extract()).strip() # type: str
             item = BaiduItem()
             item['url'] = url
             item['showurl'] = showurl

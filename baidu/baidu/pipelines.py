@@ -6,11 +6,9 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 import sys
-
 from scrapy.exceptions import DropItem
 from scrapy.spiders import Spider
 from scrapy import Item
-
 from lilspider import checker
 
 class BaiduPipeline(object):
@@ -28,9 +26,9 @@ class Blog39NetPipeline(object):
 
         try:
             checker.Regex('^blog\.39\.net\/\w+', item['showurl']).run()
-            checker.UnInclude('广州', item['title']).run()
-            checker.UnInclude('石家庄', item['title']).run()
-            checker.UnInclude('武汉', item['title']).run()
+            checker.Excluded('广州', item['title']).run()
+            checker.Excluded('石家庄', item['title']).run()
+            checker.Excluded('武汉', item['title']).run()
 
             return item
         except:
