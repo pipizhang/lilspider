@@ -1,4 +1,5 @@
-import scrapy
+# -*- coding: utf-8 -*-
+from scrapy.spiders import CrawlSpider, Rule
 
-class CommonSpider(scrapy.Spider):
+class CommonSpider(CrawlSpider):
     pass
