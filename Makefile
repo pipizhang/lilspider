@@ -1,18 +1,19 @@
 SHELL := /bin/bash
 
 help: ## This help message
-	@echo "usage: make [target]"
-	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m: \2/')"
+	@echo "Usage: make [target]"
+	@echo "Commands:"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 .PHONY:clean
 clean: ## Clean
 	@exec rm -rf ./venv
 
 .PHONY:install
-install: ## Install
+install: ## Setup Virtualenv
 	@exec virtualenv --no-site-packages venv
 
 .PHONY:test
-test: ## Test
+test: ## Run test suites
 	@exec pytest
 
