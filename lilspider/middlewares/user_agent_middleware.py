@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
 import scrapy
-from .agents import AGENTS
+from ..agents import AGENTS
 
 class UserAgentMiddleware(object):
 

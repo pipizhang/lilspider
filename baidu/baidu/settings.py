@@ -99,4 +99,4 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # Log
-LOG_ENABLED=False
+#LOG_ENABLED=False
