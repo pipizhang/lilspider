@@ -15,5 +15,5 @@ install: ## Setup Virtualenv
 
 .PHONY:test
 test: ## Run test suites
-	@exec pytest
+	@exec pytest -v
 
