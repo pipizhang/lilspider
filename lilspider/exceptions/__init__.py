@@ -7,3 +7,5 @@ class NotConfigured(Exception):
 class CheckerError(Exception):
     pass
 
+class CleanerError(Exception):
+    pass
