@@ -5,10 +5,10 @@ from scrapy import Request, Selector
 from scrapy.http import Response
 from scrapy.spiders import Rule
 from scrapy.linkextractors import LinkExtractor as sle
-from lilspider.spiders import CommonSpider
+from lilspider.spiders import SimpleSpider
 from ..items import BaiduItem
 
-class SearchSpider(CommonSpider):
+class SearchSpider(SimpleSpider):
     name = 'search'
     allowed_domains = ['www.baidu.com']
 
