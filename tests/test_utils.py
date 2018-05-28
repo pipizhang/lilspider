@@ -14,3 +14,16 @@ def test_url_encode(capsys: Any) -> None:
 def test_url_encode(capsys: Any) -> None:
     assert url_decode('hello%20world') == 'hello world'
 
+def test_remove_empty_tags(capsys: Any) -> None:
+    html = '<p>lilspider<strong></strong></p>'
+    assert remove_tags(html) == 'lilspider'
+
+def test_remove_tags(capsys: Any) -> None:
+    html = """
+        <html>
+        <body class="main">
+          <h1>rocket man</h1>
+        </body>
+        </html>
+    """
+    assert remove_tags(html) == 'rocket man'

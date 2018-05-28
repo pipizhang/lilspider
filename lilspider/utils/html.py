@@ -37,5 +37,5 @@ def remove_empty_elements(shtml: str) -> str:
 
 def remove_tags(shtml: str) -> str:
     cleantext = bs(shtml, "lxml").text
-    return cleantext
+    return cleantext.strip()
 
