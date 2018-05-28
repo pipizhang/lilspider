@@ -7,8 +7,8 @@
 
 import scrapy
 
-
-class Net39Item(scrapy.Item):
+class ArticleItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    content = scrapy.Field()
+    url = scrapy.Field()

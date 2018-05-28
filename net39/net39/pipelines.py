@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
+from lilspider.cleaner import HtmlCleaner
+import logging
 
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
-
-class Net39Pipeline(object):
+class ArticlePipeline(object):
     def process_item(self, item, spider):
+        self._title(item)
+        self._content(item)
         return item
+
+    def _title(self, item):
+        item['title'] = item['title']
+
+    def _content(self, item):
+        item['content'] = item['content']
+

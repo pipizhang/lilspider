@@ -14,20 +14,20 @@ class Net39SpiderMiddleware(object):
     # passed objects.
 
     @classmethod
-    def from_crawler(cls, crawler):
+    def from_crawler(cls, crawler): # type: ignore
         # This method is used by Scrapy to create your spiders.
         s = cls()
         crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
         return s
 
-    def process_spider_input(self, response, spider):
+    def process_spider_input(self, response, spider): # type: ignore
         # Called for each response that goes through the spider
         # middleware and into the spider.
 
         # Should return None or raise an exception.
         return None
 
-    def process_spider_output(self, response, result, spider):
+    def process_spider_output(self, response, result, spider): # type: ignore
         # Called with the results returned from the Spider, after
         # it has processed the response.
 
@@ -35,7 +35,7 @@ class Net39SpiderMiddleware(object):
         for i in result:
             yield i
 
-    def process_spider_exception(self, response, exception, spider):
+    def process_spider_exception(self, response, exception, spider): # type: ignore
         # Called when a spider or process_spider_input() method
         # (from other spider middleware) raises an exception.
 
@@ -43,7 +43,7 @@ class Net39SpiderMiddleware(object):
         # or Item objects.
         pass
 
-    def process_start_requests(self, start_requests, spider):
+    def process_start_requests(self, start_requests, spider): # type: ignore
         # Called with the start requests of the spider, and works
         # similarly to the process_spider_output() method, except
         # that it doesn’t have a response associated.
@@ -52,7 +52,7 @@ class Net39SpiderMiddleware(object):
         for r in start_requests:
             yield r
 
-    def spider_opened(self, spider):
+    def spider_opened(self, spider): # type: ignore
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
@@ -62,13 +62,13 @@ class Net39DownloaderMiddleware(object):
     # passed objects.
 
     @classmethod
-    def from_crawler(cls, crawler):
+    def from_crawler(cls, crawler): # type: ignore
         # This method is used by Scrapy to create your spiders.
         s = cls()
         crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
         return s
 
-    def process_request(self, request, spider):
+    def process_request(self, request, spider): # type: ignore
         # Called for each request that goes through the downloader
         # middleware.
 
@@ -80,7 +80,7 @@ class Net39DownloaderMiddleware(object):
         #   installed downloader middleware will be called
         return None
 
-    def process_response(self, request, response, spider):
+    def process_response(self, request, response, spider): # type: ignore
         # Called with the response returned from the downloader.
 
         # Must either;
@@ -89,7 +89,7 @@ class Net39DownloaderMiddleware(object):
         # - or raise IgnoreRequest
         return response
 
-    def process_exception(self, request, exception, spider):
+    def process_exception(self, request, exception, spider): # type: ignore
         # Called when a download handler or a process_request()
         # (from other downloader middleware) raises an exception.
 
@@ -99,5 +99,5 @@ class Net39DownloaderMiddleware(object):
         # - return a Request object: stops process_exception() chain
         pass
 
-    def spider_opened(self, spider):
+    def spider_opened(self, spider): # type: ignore
         spider.logger.info('Spider opened: %s' % spider.name)
