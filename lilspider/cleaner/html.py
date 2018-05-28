@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from typing import TypeVar
+from typing import TypeVar, Any
 from lxml.html.clean import Cleaner
 from lxml import etree
 
@@ -13,11 +13,11 @@ class HtmlCleaner(object):
         self.__links = True
         self.__page_structure = False
         self.__safe_attrs_only = True
-        self.__allow_tags = None
-        self.__kill_tags = None
-        self.__remove_tags = None
-        self.__safe_attrs = ['href', 'src']
-        self.__input = str
+        self.__allow_tags = None # type: Any
+        self.__kill_tags = None # type: Any
+        self.__remove_tags = None # type: Any
+        self.__safe_attrs = ['href', 'src'] # type: Any
+        self.__input = content
 
     def input(self: T, content: str) -> T:
         self.__input = content
@@ -58,7 +58,7 @@ class HtmlCleaner(object):
         self.__safe_attrs_only = enable
         return self
 
-    def clean_html(self: T) -> T:
+    def clean(self: T) -> str:
         cleaner = Cleaner()
         cleaner.style = self.__style
         cleaner.links = self.__links
@@ -71,5 +71,5 @@ class HtmlCleaner(object):
         if self.__safe_attrs is not None: cleaner.safe_attrs = self.__safe_attrs
 
         self.__input = cleaner.clean_html(self.__input)
-        return self
+        return self.__input
 

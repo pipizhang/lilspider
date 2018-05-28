@@ -22,7 +22,7 @@ class CrawlSpider(cSpider):
             trim = trim
         )
 
-    def extract_xpath(self, resp: Response, rule: str, first: bool=False, join: bool=True, strip: bool=True) -> str:
+    def extract_xpath(self, resp: Response, rule: str, first: bool=False, join: bool=True, trim: bool=True) -> str:
         return self._extract_item('xpath', resp,
             rule = rule,
             first = first,

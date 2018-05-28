@@ -8,7 +8,7 @@ class Base(object):
         self.pattern = pattern
         self.replacement = replacement
 
-    def run(self) -> None:
+    def run(self) -> str:
         raise NotImplementedError
 
 class Replace(Base):
