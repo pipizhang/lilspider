@@ -18,7 +18,7 @@ class ImagePipeline(object):
 
     """Extract images from content, replace img tags with placeholder and populagte 'image_urls' for download"""
 
-    def process_item(self, item, spider):
+    def process_item(self, item: scrapy.Item, spider: scrapy.Spider) -> List:
         if 'content' in item:
             s = get_soup(item['content'])
             images = s.select('img')
