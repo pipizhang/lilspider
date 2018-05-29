@@ -7,6 +7,12 @@ from ..cleaner import HtmlCleaner
 def get_cleaner(shtml: str='') -> HtmlCleaner:
     return HtmlCleaner(shtml)
 
+def get_soup(shtml: str='', **kwargs) -> bs:
+    if len(kwargs):
+        return bs(shtml, **kwargs)
+    else:
+        return bs(shtml, 'html.parser')
+
 def pretty(shtml:str, newline_tags: Any=[], ltrim: bool=True, itrim=True) -> str:
     soup = bs(shtml, 'html.parser')
     phtml = soup.prettify()

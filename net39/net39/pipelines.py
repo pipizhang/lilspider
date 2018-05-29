@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+import re
 from lilspider.cleaner import HtmlCleaner
-import logging
 
 class ArticlePipeline(object):
     def process_item(self, item, spider):
@@ -13,4 +13,5 @@ class ArticlePipeline(object):
 
     def _content(self, item):
         item['content'] = item['content']
+
 

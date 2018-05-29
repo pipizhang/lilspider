@@ -17,7 +17,8 @@ class BlogSpider(SimpleSpider):
 
     def start_requests(self) -> Generator:
         urls = [
-            'http://blog.39.net/%E6%9F%AF%E4%BA%91%E8%B7%AF/a_9415456.html'
+            #'http://blog.39.net/%E6%9F%AF%E4%BA%91%E8%B7%AF/a_9415456.html'
+            'http://blog.39.net/liguangren/a_16681950.html'
         ]
 
         for url in urls:

@@ -70,9 +70,10 @@ EXTENSIONS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'net39.pipelines.ArticlePipeline': 20,
-    #'net39.pipelines.Net39Pipeline': 30,
-    'lilspider.pipelines.ItemDebugPipeline': 30
+    'lilspider.pipelines.ImagePipeline': 100,
+    'scrapy.pipelines.images.ImagesPipeline': 110,
+    'net39.pipelines.ArticlePipeline': 200,
+    'lilspider.pipelines.ItemDebugPipeline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -97,5 +98,5 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 CLOSESPIDER_PAGECOUNT = 100
-
 LOG_LEVEL = 'INFO'
+IMAGES_STORE = '/tmp/images'
