@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ..utils import get_cleaner, pretty, remove_tags
+from ..utils import *
 
 class CommonArticleTitle(object):
     """
