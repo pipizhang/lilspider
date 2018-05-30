@@ -8,6 +8,8 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+import os
+import os.path as path
 
 BOT_NAME = 'net39'
 
@@ -73,7 +75,8 @@ ITEM_PIPELINES = {
     'lilspider.pipelines.ImagePipeline': 100,
     'scrapy.pipelines.images.ImagesPipeline': 110,
     'net39.pipelines.ArticlePipeline': 200,
-    'lilspider.pipelines.ItemDebugPipeline': 300
+    'lilspider.pipelines.ItemDebugPipeline': 300,
+    'scrapy_mongodb.MongoDBPipeline': 600,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -99,4 +102,14 @@ ITEM_PIPELINES = {
 
 CLOSESPIDER_PAGECOUNT = 100
 LOG_LEVEL = 'INFO'
-IMAGES_STORE = '/tmp/images'
+
+# Images
+IMAGES_STORE = path.abspath(path.dirname(path.realpath(__file__))+'/../../data/images')
+
+# MongoDBPipeline
+# See https://github.com/sebdah/scrapy-mongodb
+MONGODB_URI = os.environ.get('MONGODB_URI')
+MONGODB_DATABASE = 'scrapy'
+MONGODB_COLLECTION = 'myitems'
+MONGODB_UNIQUE_KEY = 'url'
+
