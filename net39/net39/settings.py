@@ -56,6 +56,7 @@ SPIDER_MIDDLEWARES = {
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
+    'lilspider.middlewares.MongoDBDupeFilterMiddleware': 12,
     'lilspider.middlewares.UserAgentMiddleware': 20,
     'net39.middlewares.Net39DownloaderMiddleware': 200
 }

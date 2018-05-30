@@ -21,10 +21,10 @@ class ArticleSpider(CrawlSpider):
     ]
     start_urls = [random.choice([
         'http://disease.39.net/',
-        #'http://woman.39.net/',
-        #'http://oldman.39.net/',
-        #'http://baby.39.net/',
-        #'http://care.39.net/',
+        'http://woman.39.net/',
+        'http://oldman.39.net/',
+        'http://baby.39.net/',
+        'http://care.39.net/',
     ])]
     rules = [
         Rule(LinkExtractor(allow=(r'http:\/\/[a-z]+\.39\.net\/a\/\d+\/\d+\.html$')), callback='parse_article', follow=True),
