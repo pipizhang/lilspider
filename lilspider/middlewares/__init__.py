@@ -1,3 +1,3 @@
-from .user_agent_middleware import UserAgentMiddleware
-from .disallow_domain_middleware import DisallowDomainMiddleware
+from .user_agent import UserAgentMiddleware
+from .disallow_domain import DisallowDomainMiddleware
 
