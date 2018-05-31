@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 import logging
 import scrapy
-from scrapy import signals
 from scrapy.exceptions import IgnoreRequest, NotConfigured
 from pymongo import errors
 from pymongo.mongo_client import MongoClient
-from scrapy.utils.misc import load_object
 
 logger = logging.getLogger(__name__)
 

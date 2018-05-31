@@ -56,8 +56,10 @@ SPIDER_MIDDLEWARES = {
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'lilspider.middlewares.MongoDBDupeFilterMiddleware': 12,
-    'lilspider.middlewares.UserAgentMiddleware': 20,
+    'lilspider.middlewares.ProxyMiddleware': 10,
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 20,
+    'lilspider.middlewares.MongoDBDupeFilterMiddleware': 30,
+    'lilspider.middlewares.UserAgentMiddleware': 50,
     'net39.middlewares.Net39DownloaderMiddleware': 200
 }
 
@@ -113,4 +115,7 @@ MONGODB_URI = os.environ.get('MONGODB_URI')
 MONGODB_DATABASE = 'scrapy'
 MONGODB_COLLECTION = 'myitems'
 MONGODB_UNIQUE_KEY = 'url'
+
+# Proxy
+HTTP_PROXY = os.environ.get('HTTP_PROXY')
 
