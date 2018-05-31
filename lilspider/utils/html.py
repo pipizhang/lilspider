@@ -31,7 +31,7 @@ def pretty(shtml:str, newline_tags: Any=[], ltrim: bool=True, itrim: bool=True) 
         newline_tags = newline_tags.split()
     if len(newline_tags):
         for tag in newline_tags:
-            phtml = re.sub(r'\<\/'+re.escape(tag)+r'\>', '</{}>\n'.format(tag), phtml)
+            phtml = re.sub(r'\<\/'+re.escape(tag)+r'\>', f'</{tag}>\n', phtml)
 
     if ltrim:
         phtml = re.sub(r'^\s+', '', phtml, flags=re.MULTILINE)

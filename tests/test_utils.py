@@ -34,3 +34,4 @@ def test_inner_trim(capsys: Any) -> None:
     assert inner_trim(html1) == '<p>a<strong>b</strong></p>'
     assert inner_trim(html2) != '<p>a<i>b</i></p>'
     assert inner_trim(html2, 'p i'.split()) == '<p>a<i>b</i></p>'
+    assert inner_trim(html2, 'p'.split()) == '<p>a<i> b </i></p>'
