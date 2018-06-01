@@ -117,5 +117,6 @@ MONGODB_COLLECTION = 'myitems'
 MONGODB_UNIQUE_KEY = 'url'
 
 # Proxy
-HTTP_PROXY = os.environ.get('HTTP_PROXY')
+HTTPPROXY_ENABLED = False
+HTTPPROXY_ADDRESS = os.environ.get('HTTPPROXY_ADDRESS')
 
