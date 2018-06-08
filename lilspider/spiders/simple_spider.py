@@ -4,6 +4,8 @@ from scrapy.spiders import Spider
 
 class SimpleSpider(Spider):
 
+    provider = ''
+
     def _extract_item(self, mode: str, resp: Response, rule: str, first: bool, join: bool, trim: bool) -> str:
         func = getattr(resp, mode)
         sele = func(rule)
