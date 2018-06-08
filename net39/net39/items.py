@@ -9,4 +9,7 @@ class ArticleItem(scrapy.Item):
     url        = scrapy.Field()
     image_urls = scrapy.Field()
     images     = scrapy.Field()
+    provider   = scrapy.Field()
     created_at = scrapy.Field()
+    updated_at = scrapy.Field()
+    indexed_at = scrapy.Field()

@@ -113,10 +113,13 @@ IMAGES_STORE = path.abspath(path.dirname(path.realpath(__file__))+'/../../data/i
 # See https://github.com/sebdah/scrapy-mongodb
 MONGODB_URI = os.environ.get('MONGODB_URI')
 MONGODB_DATABASE = 'scrapy'
-MONGODB_COLLECTION = 'myitems'
+MONGODB_COLLECTION = 'jkArticle'
 MONGODB_UNIQUE_KEY = 'url'
 
 # Proxy
 HTTPPROXY_ENABLED = False
 HTTPPROXY_ADDRESS = os.environ.get('HTTPPROXY_ADDRESS')
+
+# Retry
+RETRY_ENABLED = True
 

@@ -10,6 +10,7 @@ from ..itemloaders import BlogItemLoader
 
 class BlogSpider(SimpleSpider):
     name = 'blog'
+    provider = 'blog.39.net'
     allowed_domains = ['blog.39.net']
 
     def __init__(self) -> None:
