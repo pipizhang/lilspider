@@ -50,6 +50,9 @@ def remove_tags(shtml: str) -> str:
     cleantext = bs(shtml, "lxml").text
     return cleantext.strip()
 
+def html2text(shtml: str) -> str:
+    return remove_tags(shtml)
+
 def inner_trim(shtml: str, tags: List=[]) -> str:
     if len(tags) == 0:
         tags = 'div p span strong'.split()

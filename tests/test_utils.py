@@ -27,6 +27,7 @@ def test_remove_tags(capsys: Any) -> None:
         </html>
     """
     assert remove_tags(html) == 'rocket man'
+    assert html2text(html) == 'rocket man'
 
 def test_inner_trim(capsys: Any) -> None:
     html1 = '<p> a<strong> b </strong></p>'
