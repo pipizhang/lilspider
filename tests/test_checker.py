@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 from typing import Any
-from lilspider.checker import *
+from lilspider.checker.base import Included, Excluded
 
 def test_included(capsys: Any) -> None:
     assert Included('llo', 'hello world').yes() is True

@@ -3,6 +3,7 @@ import re
 import datetime
 import scrapy
 from typing import Any, List
+from scrapy.exceptions import DropItem
 from lilspider.cleaner import HtmlCleaner
 
 class ArticlePipeline(object):
@@ -16,9 +17,13 @@ class ArticlePipeline(object):
         return item
 
     def _title(self, item: Any) -> None:
+        if len(item['title']) < 3:
+            raise DropItem("Drop item as title '{}' is bad".format(item['title']))
         item['title'] = item['title']
 
     def _content(self, item: Any) -> None:
+        if len(item['content']) < 100:
+            raise DropItem("Drop item as content is too short")
         item['content'] = item['content']
 
 

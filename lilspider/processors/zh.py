@@ -3,6 +3,8 @@ import re
 from ..utils import *
 from ..purifier.html import HtmlRawPurifier
 from .base import PurifierProcessor
+from ..checker.zh import TitleText
+from ..exceptions import CheckerError
 
 class ArticleTitle(PurifierProcessor):
 
@@ -10,7 +12,12 @@ class ArticleTitle(PurifierProcessor):
         pass
 
     def __call__(self, content: str) -> str:
-        content = remove_tags(content)
+        try:
+            TitleText(content).run()
+        except CheckerError:
+            return ""
+
+        content = html2text(content)
         content = re.sub(r'\s+', ' ', content)
         content = str.strip(content)
         return content

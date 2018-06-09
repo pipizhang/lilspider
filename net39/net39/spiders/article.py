@@ -21,7 +21,8 @@ class ArticleSpider(CrawlSpider):
         'zl.39.net',
     ]
     start_urls = [random.choice([
-        'http://disease.39.net/',
+        'http://care.39.net/a/20111031/1834407.html'
+        #'http://disease.39.net/',
         #'http://woman.39.net/',
         #'http://oldman.39.net/',
         #'http://baby.39.net/',
