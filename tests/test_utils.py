@@ -11,7 +11,7 @@ def test_abs_url(capsys: Any) -> None:
 def test_url_encode(capsys: Any) -> None:
     assert url_encode('hello world') == 'hello%20world'
 
-def test_url_encode(capsys: Any) -> None:
+def test_url_decode(capsys: Any) -> None:
     assert url_decode('hello%20world') == 'hello world'
 
 def test_remove_empty_tags(capsys: Any) -> None:

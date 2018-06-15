@@ -9,6 +9,6 @@ def extract_tags(content: str, topK: int=5) -> List[str]:
 
 def textrank(content: str, topK: int=10) -> List:
     allow = ('ns', 'n', 'vn')
-    rank = jieba.analyse.textrank(data, topK=topK, withWeight=True, allowPOS=allow)
+    rank = jieba.analyse.textrank(content, topK=topK, withWeight=True, allowPOS=allow)
     return rank
 
