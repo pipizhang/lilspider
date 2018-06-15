@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import re
 from ..utils import *
-from ..purifier.html import HtmlRawPurifier
+from ..purifier.base import TextSpaceProcessor
+from ..purifier.html import HtmlRawPurifier, HtmlSafePurifier
 from .base import PurifierProcessor
 from ..checker.zh import TitleTextChecker
 from ..exceptions import CheckerError
@@ -18,13 +19,15 @@ class ArticleTitle(PurifierProcessor):
             return ""
 
         content = html2text(content)
-        content = re.sub(r'\s+', ' ', content)
+        content = re.sub(r'\s{2,}', ' ', content)
         content = str.strip(content)
         return content
 
 class ArticleContent(PurifierProcessor):
 
     purifiers = [
-        HtmlRawPurifier()
+        HtmlRawPurifier(),
+        HtmlSafePurifier(),
+        TextSpaceProcessor()
     ]
 
