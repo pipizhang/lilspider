@@ -3,7 +3,7 @@ import re
 from ..utils import *
 from ..purifier.html import HtmlRawPurifier
 from .base import PurifierProcessor
-from ..checker.zh import TitleText
+from ..checker.zh import TitleTextChecker
 from ..exceptions import CheckerError
 
 class ArticleTitle(PurifierProcessor):
@@ -13,7 +13,7 @@ class ArticleTitle(PurifierProcessor):
 
     def __call__(self, content: str) -> str:
         try:
-            TitleText(content).run()
+            TitleTextChecker(content).run()
         except CheckerError:
             return ""
 

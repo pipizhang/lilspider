@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from typing import List
-from .base import MExcluded
-from .dictionary import Dictionary
+from .base import MExcluded, MIncluded
+from .dictionary import DictionaryChecker
 from ..utils.html import get_soup
 
-class Link(Dictionary):
-    name = 'LinkChecker'
+class LinkChecker(DictionaryChecker):
+    """ Checker class for links url """
+    name  = 'LinkChecker'
     dicts = [
         '.me', '.cc', '.info',
         '.taobao.com', 'jd.com'
@@ -19,8 +20,9 @@ class Link(Dictionary):
         for a in els:
             MExcluded(self.dicts, a['href']).run()
 
-class LinkText(Dictionary):
-    name = 'LinkTextChecker'
+class LinkTextChecker(DictionaryChecker):
+    """ Checker class for links text """
+    name  = 'LinkTextChecker'
     dicts = [
         '手机话费', '网址导航'
     ]
@@ -33,8 +35,9 @@ class LinkText(Dictionary):
         for a in els:
             MExcluded(self.dicts, a.text).run()
 
-class TitleText(Dictionary):
-    name = 'TitleTextChecker'
+class TitleTextChecker(DictionaryChecker):
+    """ Checker class for title text """
+    name  = 'TitleTextChecker'
     dicts = [
         '产品', '推广'
     ]
@@ -42,6 +45,19 @@ class TitleText(Dictionary):
     def run(self) -> None:
         MExcluded(self.dicts, self.example).run()
 
-class City(Dictionary):
-    pass
+class CityIncludedChecker(DictionaryChecker):
+    name = "CityIncludedChecker"
+
+    def run(self) -> None:
+        self.read_dict_file('zh_city')
+        if not any(city in self.example for city in self.dicts):
+            self.throw('CityIncludedChecker invalid "{}"'.format(self.example))
+
+class CityExcludedChecker(DictionaryChecker):
+    name = "CityExcludedChecker"
+
+    def run(self) -> None:
+        self.read_dict_file('zh_city')
+        if any(city in self.example for city in self.dicts):
+            self.throw('CityExcludedChecker invalid "{}"'.format(self.example))
 

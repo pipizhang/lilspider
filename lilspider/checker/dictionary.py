@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from typing import List
+import os
 from ..exceptions import CheckerError
 
-class Dictionary(object):
+class DictionaryChecker(object):
     name = "DictionaryChecker" # type:str
     dicts = [] # type:List
 
@@ -10,7 +11,18 @@ class Dictionary(object):
         self.example = example
 
     def read_dict_file(self, dictfile: str) -> None:
-        pass
+        try:
+            dict_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'dictionary'))
+            dict_file = os.path.join(dict_path, dictfile)
+            with open(dict_file, 'r') as myfile:
+                data = myfile.read()
+            tmp = data.split("\n")
+            tmp = list(filter(None, tmp))
+            tmp = list(filter(lambda x: not x.startswith('//'), tmp))
+            if isinstance(tmp, list):
+                self.dicts = tmp
+        except Exception as e:
+            pass
 
     def throw(self, msg: str=None) -> None:
         if msg == None:
