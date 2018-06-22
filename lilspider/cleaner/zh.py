@@ -21,7 +21,7 @@ class HtmlInnertextCleaner(object):
                 if len(m) > p['min_length'] and len(m) < p['max_length'] and re.match(p['regex'], m):
                     rlist.append(m)
 
-        print(rlist)
+        #print(rlist)
         for r in rlist:
             self.example = self.example.replace(r, '')
 

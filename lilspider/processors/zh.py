@@ -2,7 +2,7 @@
 import re
 from ..utils import *
 from ..purifier.base import TextSpaceProcessor
-from ..purifier.html import HtmlRawPurifier, HtmlSafePurifier
+from ..purifier.html import HtmlRawPurifier
 from .base import PurifierProcessor
 from ..checker.zh import TitleTextChecker
 from ..exceptions import CheckerError
@@ -22,12 +22,4 @@ class ArticleTitle(PurifierProcessor):
         content = re.sub(r'\s{2,}', ' ', content)
         content = str.strip(content)
         return content
-
-class ArticleContent(PurifierProcessor):
-
-    purifiers = [
-        HtmlRawPurifier(),
-        HtmlSafePurifier(),
-        TextSpaceProcessor()
-    ]
 
