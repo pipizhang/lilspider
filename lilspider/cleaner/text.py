@@ -2,6 +2,20 @@
 import re
 from typing import List
 
+class TextCleaner(object):
+    def __init__(self, example: str, patterns: List=[]) -> None:
+        self.example = example
+        self.patterns = patterns
+
+    def add_pattern(self, regex: str) -> None:
+        self.patterns.append(regex)
+
+    def run(self) -> str:
+        if len(self.patterns) < 1: return self.example
+        for p in self.patterns:
+            self.example = re.sub(p, '', self.example, flags=re.M)
+        return self.example
+
 class HtmlInnertextCleaner(object):
     html_tag = 'p'
 

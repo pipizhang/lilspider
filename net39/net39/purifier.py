@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
-from lilspider.cleaner.zh import PTextCleaner
-from lilspider.cleaner.base import Replace
+from lilspider.cleaner.text import PTextCleaner, TextCleaner
 from lilspider.utils.html import get_cleaner, pretty
 
 class Net39SpecialPurifier(object):
@@ -19,7 +18,8 @@ class Net39SpecialPurifier(object):
         cl.add_pattern('.*医院.*专家.*', 30)
         cl.add_pattern('^<p><a .*?</a></p>$')
         content = cl.run()
-        content = Replace(content, [
+
+        content = TextCleaner(content, [
             '39健康网.*?转载。'
         ]).run()
         return content
