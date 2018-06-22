@@ -79,7 +79,7 @@ ITEM_PIPELINES = {
     'scrapy.pipelines.images.ImagesPipeline': 110,
     'net39.pipelines.ArticlePipeline': 200,
     'lilspider.pipelines.ItemDebugPipeline': 300,
-    'scrapy_mongodb.MongoDBPipeline': None,
+    'scrapy_mongodb.MongoDBPipeline': 400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

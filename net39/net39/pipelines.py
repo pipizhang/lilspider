@@ -5,6 +5,7 @@ import scrapy
 from typing import Any, List
 from scrapy.exceptions import DropItem
 from lilspider.cleaner import HtmlCleaner
+from lilspider.utils.html import html2text
 
 class ArticlePipeline(object):
     def process_item(self, item: scrapy.Item, spider: scrapy.Spider) -> List:
@@ -22,7 +23,7 @@ class ArticlePipeline(object):
         item['title'] = item['title']
 
     def _content(self, item: Any) -> None:
-        if len(item['content']) < 100:
+        if len(html2text(item['content'])) < 200:
             raise DropItem("Drop item as content is too short")
         item['content'] = item['content']
 
