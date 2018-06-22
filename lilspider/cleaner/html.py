@@ -65,7 +65,10 @@ class HtmlCleaner(object):
         cleaner.page_structure = self.__page_structure
         cleaner.safe_attrs_only = self.__safe_attrs_only
 
-        if self.__allow_tags is not None: cleaner.allow_tags = self.__allow_tags
+        # allow_tags and remove_unknown_tags can't work together
+        if self.__allow_tags is not None:
+            cleaner.remove_unknown_tags = False
+            cleaner.allow_tags = self.__allow_tags
         if self.__kill_tags is not None: cleaner.kill_tags = self.__kill_tags
         if self.__remove_tags is not None: cleaner.remove_tags = self.__remove_tags
         if self.__safe_attrs is not None: cleaner.safe_attrs = self.__safe_attrs
