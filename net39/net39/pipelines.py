@@ -12,6 +12,7 @@ class ArticlePipeline(object):
         self._title(item)
         self._content(item)
         item['provider'] = spider.provider
+        item['consumer'] = ''
         item['created_at'] = datetime.datetime.utcnow()
         item['updated_at'] = None
         item['indexed_at'] = None
