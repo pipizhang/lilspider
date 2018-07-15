@@ -11,6 +11,7 @@ class Net39SpecialPurifier(object):
         cl.add_pattern('.*实习编辑：.*')
         cl.add_pattern('.*责任编辑：.*')
         cl.add_pattern('.*相关阅读：.*')
+        cl.add_pattern('.*相关链接：.*')
         cl.add_pattern('.*推荐阅读：.*')
         cl.add_pattern('.*关注.*微信.*')
         cl.add_pattern('.*扫描.*二维码.*')
@@ -34,7 +35,7 @@ class Net39HtmlPurifier(object):
 
     def second(self, content: str) -> str:
         c = get_cleaner(content)
-        c.allow_tags('p', 'div', 'strong')
+        c.allow_tags('p', 'div', 'strong', 'img')
         return c.clean()
 
     def __call__(self, content: str) -> str:
